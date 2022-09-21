@@ -15,16 +15,32 @@ const createCalendarList = (date)=>{
     for (let index = 1; index <= dates; index++) {
         const date = date_start.clone().date(index);
         date_list.push({
-            day:date.format("DD"),
+            day:date.format("D"),
             date:date.format("YYYY-MM-DD"),
             moment:date
         });
     }
     //补全空日期
-    
+    for (let index = 0; index < date_start.day() ; index++){
+        const date = date_start.clone().subtract(index+1,'d');
+        date_list.unshift({
+            day:date.format("D"),
+            date:date.format("YYYY-MM-DD"),
+            moment:date
+        });
+    }
+    for (let index = 0; (date_end.day()+index) < 6 ; index++){
+        const date = date_end.clone().add(index+1,'d');
+        date_list.push({
+            day:date.format("D"),
+            date:date.format("YYYY-MM-DD"),
+            moment:date
+        });
+    }
     return date_list;
 }
 obj.wx_date_lists = createCalendarList("2022-09-20");
+obj.wx_week_lists = wxWeekNames;
 // console.log(obj.wx_date_lists);
 obj.PageMain = reactive({
     count:0,

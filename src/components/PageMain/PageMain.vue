@@ -1,8 +1,13 @@
 <template>
     <section class="wxCalendar">
+      <div class="wxCalendarHead">
+        <div class="wxCalendarGrid" v-for="week in wx_week_lists">
+          {{week}}
+        </div>
+      </div>
       <div class="wxCalendarMain">
         <div class="wxCalendarGrid" v-for="date in wx_date_lists">
-          {{date.day}}
+          <div class="">{{date.day}}</div>
         </div>
       </div>
     </section>
@@ -12,7 +17,7 @@
   const props = defineProps(["wxFirstDay"]);
   
   console.log(props);
-  const {PageMain,btn,wx_date_lists} = obj;
+  const {PageMain,btn,wx_date_lists,wx_week_lists} = obj;
   console.log(PageMain)
 </script>
 <style lang="scss" scoped>
@@ -25,6 +30,9 @@
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ 
+  }
+  %f-direction{
+    flex-direction:column;
   }
   @mixin flex($css){
     -webkit-box-flex: $css;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -42,9 +50,22 @@
   }
   .wxCalendar{
     border: solid 2px $border-out;
+    @extend %d-flex;
+    @extend %f-direction;
+    height:100%;
+    .wxCalendarHead{
+      @extend %d-flex;
+      @include flex(0 0 40px);
+      border-bottom: solid 2px $border-out;
+      .wxCalendarGrid{
+        @include flex(1 1 14%);
+        text-align:center;
+      }
+    }
     .wxCalendarMain{
       @extend %d-flex;
       @extend %f-wrap;
+      @include flex(1);
       .wxCalendarGrid{
         position: relative;
         @include flex(1 1 14%);
