@@ -1,4 +1,4 @@
-# e-calendar
+# wxCalendar
 
 ## Project setup
 ```
