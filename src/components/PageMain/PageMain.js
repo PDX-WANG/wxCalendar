@@ -37,7 +37,7 @@ const createCalendarList = (date)=>{
             moment:date
         });
     }
-    //测试
+    //测试222
     return date_list;
 }
 obj.wx_date_lists = createCalendarList("2022-09-20");
