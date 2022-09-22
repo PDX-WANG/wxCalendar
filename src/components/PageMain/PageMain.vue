@@ -17,7 +17,7 @@
   const props = defineProps(["wxFirstDay"]);
   
   console.log(props);
-  
+  //测试4
   const {PageMain,btn,wx_date_lists,wx_week_lists} = obj;
   console.log(PageMain)
 </script>
