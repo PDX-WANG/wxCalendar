@@ -1,4 +1,5 @@
 import { reactive,nextTick } from "vue"
+import calendarFormat from "./CalendarFormat";
 import moment from 'moment'
 const obj = {};
 //日历一周首日为周几
@@ -17,6 +18,7 @@ const createCalendarList = (date)=>{
         date_list.push({
             day:date.format("D"),
             date:date.format("YYYY-MM-DD"),
+            dateformat:calendarFormat.solar2lunar(date.format("YYYY"),date.format("MM"),date.format("DD")),
             moment:date
         });
     }
@@ -26,6 +28,7 @@ const createCalendarList = (date)=>{
         date_list.unshift({
             day:date.format("D"),
             date:date.format("YYYY-MM-DD"),
+            dateformat:calendarFormat.solar2lunar(date.format("YYYY"),date.format("MM"),date.format("DD")),
             moment:date
         });
     }
@@ -34,9 +37,11 @@ const createCalendarList = (date)=>{
         date_list.push({
             day:date.format("D"),
             date:date.format("YYYY-MM-DD"),
+            dateformat:calendarFormat.solar2lunar(date.format("YYYY"),date.format("MM"),date.format("DD")),
             moment:date
         });
     }
+    console.log(date_list);
     //测试333
     return date_list;
 }
