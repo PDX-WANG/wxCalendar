@@ -1,14 +1,20 @@
 <template>
-  <PageMain :wxFirstDay="0" :wxWDay="2"/>
+  <div id="free">
+    <PageMain :wxFirstDay="0" :wxWDay="2"/>
+  </div>
 </template>
 
 <script>
 import PageMain from './components/PageMain/PageMain.vue'
-
+import FreeArea from './components/PageMain/wxFreeArea'
 export default {
   name: 'App',
   components: {
     PageMain
+  },
+  mounted(){
+    console.log(document.querySelectorAll("#free"));
+    FreeArea("#free");
   }
 }
 </script>
@@ -23,7 +29,5 @@ div{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  width:100%;
-  height:500px;
 }
 </style>
